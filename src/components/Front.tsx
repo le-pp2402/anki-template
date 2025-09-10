@@ -1,10 +1,12 @@
-export const Front = () => {
+import { Message } from '../App';
+
+export const Front = ({data} : {data: Message['data']}) => {
     return (
         <div className="bg-white bg-opacity-60 rounded-xl shadow-lg w-full max-w-md p-6">
             <div className="space-y-6">
             <div className="flex flex-col">
                 <span className="text-sm text-gray-500 font-medium mb-1">Word</span>
-                <span className="text-2xl font-bold text-gray-800">Serendipity</span>
+                <span className="text-2xl font-bold text-gray-800">{data.word}</span>
             </div>
             <div className="flex flex-col">
                 <span className="text-sm text-gray-500 font-medium mb-1">Phonetic</span>
@@ -23,13 +25,13 @@ export const Front = () => {
                         fontWeight: "530",
                     }}
                 >
-                    /ˌser.ənˈdɪp.ə.ti/
+                    {data.phonetic}
                 </span>
             </div>
             <div className="flex flex-col">
                 <span className="text-sm text-gray-500 font-medium mb-1">Meaning</span>
                 <span className="text-base text-gray-700">
-                The fact of finding interesting or valuable things by chance
+                    {data.meaning}
                 </span>
             </div>
             <div className="flex flex-col">
@@ -48,7 +50,7 @@ export const Front = () => {
                         width: "fit-content",
                     }}
                 >
-                    Noun
+                    {data.partOfSpeech}
                 </span>
             </div>
             </div>
