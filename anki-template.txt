@@ -1,0 +1,152 @@
+<div class="container">
+    <iframe id="front-iframe" src="http://localhost:5173/"></iframe>
+  </div>
+
+  <script>
+    function handleMessage(event) {
+      // Chỉ xử lý tin nhắn từ iframe
+      if (event.source !== document.querySelector('#front-iframe').contentWindow) {
+        return;
+      }
+
+      if (event.data.type === 'heartbeat') {
+        console.log('Heartbeat received from iframe.');
+
+        // Gửi dữ liệu lại cho iframe
+
+        setInterval(() => {
+          event.source.postMessage({
+            type: 'ok',
+            data: {
+              word: `{{Word}}`,
+              phonetic: `{{Phonetic Symbol}}`,
+              meaning: `{{Example Sentence}}`, 
+              partOfSpeech: `{{Definition}}`,
+              showAnswer: false
+            }
+          }, '*');
+        }, 500);
+
+        console.log('Data sent to iframe.');
+
+        var elem = document.getElementById('status');
+        if (elem) {
+          elem.innerHTML = 'YES'; // Cập nhật nội dung
+        }
+        window.removeEventListener('message', handleMessage);
+      }
+    }
+
+    document.querySelector('#front-iframe').onload = function () {
+      console.log('Iframe loaded. Listening for heartbeat...');
+      window.addEventListener('message', handleMessage);
+    };
+  </script>
+  
+  
+  <div class="container">
+    <iframe id="back-iframe" src="http://localhost:5173/"></iframe>
+  </div>
+
+  <script>
+    function handleMessage(event) {
+      // Chỉ xử lý tin nhắn từ iframe
+      if (event.source !== document.querySelector('#front-iframe').contentWindow) {
+        return;
+      }
+
+      if (event.data.type === 'heartbeat') {
+        console.log('Heartbeat received from iframe.');
+
+        // Gửi dữ liệu lại cho iframe
+
+        setInterval(() => {
+          event.source.postMessage({
+            type: 'ok',
+            data: {
+              word: `{{Word}}`,
+              phonetic: `{{Phonetic Symbol}}`,
+              meaning: `{{Example Sentence}}`, 
+              partOfSpeech: `{{Definition}}`,
+              showAnswer: true
+            }
+          }, '*');
+        }, 500);
+
+        console.log('Data sent to iframe.');
+
+        var elem = document.getElementById('status');
+        if (elem) {
+          elem.innerHTML = 'YES'; // Cập nhật nội dung
+        }
+        window.removeEventListener('message', handleMessage);
+      }
+    }
+
+    document.querySelector('#back-iframe').onload = function () {
+      console.log('Iframe loaded. Listening for heartbeat...');
+      window.addEventListener('message', handleMessage);
+    };
+  </script>
+  
+  
+  body {
+  position: relative;
+}
+
+.card {
+  height: 100vh !important;
+  overflow: hidden !important;
+  margin: 0;
+  background-color: #d1d5db;
+  display: flex;
+  flex-direction: column;
+}
+.card.night_mode {
+  background-color: #374151;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  flex: 1;
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #e9ecef;
+}
+.night_mode .container {
+  background-color: #212529;
+}
+
+iframe {
+  flex: 1;
+  align-self: stretch;
+  border: none;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 70vh;
+  letter-spacing: 1px;
+  color: #374151;
+  background-color: #e9ecef;
+}
+.night_mode .loading {
+  color: #d1d5db;
+  background-color: #212529;
+}
+.back-side .loading {
+  color: transparent;
+}
