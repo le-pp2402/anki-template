@@ -12,6 +12,7 @@
   "dependencies": {
     "@ant-design/react-slick": "^1.1.2",
     "@tailwindcss/vite": "^4.1.13",
+    "@vercel/analytics": "^1.5.0",
     "antd": "^5.27.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

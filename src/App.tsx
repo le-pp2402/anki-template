@@ -3,6 +3,7 @@ import { Front } from './components/Front'
 import { Back } from './components/Back'
 import { InputCard } from './components/InputCard'
 import { useEffect, useState } from 'react';
+import { Analytics } from "@vercel/analytics/next"
 
 export type Message = {
   type: string;
@@ -48,6 +49,7 @@ function App() {
       {
         message ?
         <>
+          <Analytics />
           <Front data={message ? message.data : {
             word: '',
             phonetic: '',
