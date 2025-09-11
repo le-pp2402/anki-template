@@ -3,7 +3,6 @@ import { Front } from './components/Front'
 import { Back } from './components/Back'
 import { InputCard } from './components/InputCard'
 import { useEffect, useState } from 'react';
-import { Analytics } from "@vercel/analytics/next"
 
 export type Message = {
   type: string;
@@ -33,10 +32,11 @@ function App() {
   };
 
   useEffect(function () {
-    
-    console.log('Sent heartbeat to parent.');
-    window.parent.postMessage({ type: 'heartbeat', data: message }, '*');
-    
+    setInterval(() => {
+      window.parent.postMessage({ type: 'heartbeat', data: message }, '*');
+      console.log('Sent heartbeat to parent.');
+    }, 100);
+
     window.addEventListener("message", onRecievedMessage);
 
     return function () {
@@ -49,7 +49,6 @@ function App() {
       {
         message ?
         <>
-          <Analytics />
           <Front data={message ? message.data : {
             word: '',
             phonetic: '',
