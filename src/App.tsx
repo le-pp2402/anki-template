@@ -22,20 +22,24 @@ export type Message = {
 
 function App() {
   const [message, setMessage] = useState<Message | null>(null);
-
+  const [isParentReceived, setIsParentReceived] = useState(false);
   const onRecievedMessage = (event: MessageEvent) => {
     console.log('Received message from parent:', event.data);
     if (event.data && event.data.type === 'ok') {
       console.log('Received data from parent:', event.data);
       setMessage(event.data);
+      setIsParentReceived(true);
     }
   };
 
   useEffect(function () {
-    setInterval(() => {
+    var interval = setInterval(() => {
       window.parent.postMessage({ type: 'heartbeat', data: message }, '*');
       console.log('Sent heartbeat to parent.');
-    }, 100);
+      if (isParentReceived) {
+        clearInterval(interval);
+      }
+    }, 100, [isParentReceived]);
 
     window.addEventListener("message", onRecievedMessage);
 
