@@ -4,7 +4,7 @@ import { Back } from './components/Back'
 import { InputCard } from './components/InputCard'
 import { useEffect, useState } from 'react';
 
-export interface Message {
+export type Message = {
   type: string;
   data: {
     word: string;

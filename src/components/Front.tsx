@@ -1,4 +1,4 @@
-import { Message } from '../App';
+import type { Message } from '../App';
 
 export const Front = ({data} : {data: Message['data']}) => {
     return (
