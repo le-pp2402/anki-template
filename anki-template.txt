@@ -19,9 +19,9 @@
             type: 'ok',
             data: {
               word: `{{Word}}`,
-              phonetic: `{{Phonetic Symbol}}`,
-              meaning: `{{Example Sentence}}`, 
-              partOfSpeech: `{{Definition}}`,
+              phonetic: `{{phonetic}}`,
+              meaning: `{{meaning}}`, 
+              partOfSpeech: `{{partOfSpeech}}`,
               showAnswer: false
             }
           }, '*');
