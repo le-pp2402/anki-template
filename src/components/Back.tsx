@@ -2,8 +2,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import type { Message } from '../App';
 
-export const Back = ({ data }: {
-  data: Message['data']
+export const Back = ({ data, redIndexes, answer }: {
+  data: Message['data'],
+  redIndexes: number[],
+  answer: string
 }) => (
   <div className="bg-white bg-opacity-60 rounded-xl shadow-lg max-w-lg p-4 mt-4 height-1000">
     <Swiper
@@ -17,6 +19,17 @@ export const Back = ({ data }: {
       modules={[Pagination, Navigation]}
       className="mySwiper"
     >
+      <SwiperSlide><p className="text-2xl font-bold">
+        {answer.split("").map((ch, i) => (
+          <span
+            key={i}
+            className={redIndexes.includes(i) ? "text-red-500" : "text-green-500"}
+          >
+            {ch}
+          </span>
+        ))}
+      </p>
+      </SwiperSlide>
       <SwiperSlide><Slide1 vietnameseDefinition={data.vietnameseDefinition} level={data.level} /></SwiperSlide>
       <SwiperSlide><Slide2 exampleSentence={data.exampleSentence} phraseCollocation={data.phraseCollocation} /></SwiperSlide>
       <SwiperSlide><Slide3 originalText={data.originalText} /></SwiperSlide>
