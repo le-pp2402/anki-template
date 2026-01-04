@@ -21,11 +21,18 @@ export const InputCard = ({ word, setUserAnswer, showBackSide }: { word: string,
   };
 
   return (
-    <div className="bg-white bg-opacity-60 rounded-xl shadow-lg w-full max-w-lg p-4 mt-4">
-      <Title level={5}> Your answer </Title>
+    <div className="bg-white bg-opacity-70 rounded-xl shadow-md w-full max-w-sm p-3 mt-3 sm:max-w-lg sm:p-4">
+      <Title level={5} className="!mb-2"> Your answer </Title>
       <div className="flex items-center gap-2">
-        <Input.OTP formatter={(str) => str.toUpperCase()} length={word.length} {...sharedProps} />
-        <Button color="primary" variant="filled" className="border-8" onClick={() => showBackSide()}> Check </Button>
+        <Input.OTP
+          className="flex-1 min-w-0"
+          formatter={(str) => str.toUpperCase()}
+          length={word.length}
+          {...sharedProps}
+        />
+        <Button color="primary" variant="filled" size="middle" className="whitespace-nowrap" onClick={() => showBackSide()}>
+          Check
+        </Button>
       </div>
     </div>
   );

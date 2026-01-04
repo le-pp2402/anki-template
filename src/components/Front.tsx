@@ -2,16 +2,16 @@ import type { Message } from '../App';
 
 export const Front = ({ data, showAnswer }: { data: Message['data'], showAnswer: boolean }) => {
     return (
-        <div className="bg-white bg-opacity-60 rounded-xl shadow-lg w-full max-w-lg p-6">
-            <div className="space-y-6">
+        <div className="bg-white bg-opacity-70 backdrop-blur-sm rounded-xl shadow-md w-full max-w-sm p-4 sm:max-w-lg sm:p-6">
+            <div className="space-y-4 sm:space-y-6">
                 <div className="flex flex-col">
-                    <span className="text-sm text-gray-500 font-medium mb-1">Word</span>
-                    <span className="text-2xl font-bold text-gray-800">{showAnswer ? data.word : '****'}</span>
+                    <span className="text-xs sm:text-sm text-gray-500 font-medium mb-1">Word</span>
+                    <span className="text-xl sm:text-2xl font-bold text-gray-800 leading-tight">{showAnswer ? data.word : '****'}</span>
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-sm text-gray-500 font-medium mb-1">Phonetic</span>
+                    <span className="text-xs sm:text-sm text-gray-500 font-medium mb-1">Phonetic</span>
                     <span
-                        className="text-base"
+                        className="text-sm sm:text-base"
                         style={{
                             color: "#1677ff",
                             background: "#e6f4ff",
@@ -19,7 +19,7 @@ export const Front = ({ data, showAnswer }: { data: Message['data'], showAnswer:
                             borderStyle: "solid",
                             borderWidth: "1px",
                             borderRadius: "0.375rem",
-                            padding: "0.25rem 0.25rem",
+                            padding: "0.2rem 0.4rem",
                             display: "inline-block",
                             width: "fit-content",
                             fontWeight: "530",
@@ -29,15 +29,15 @@ export const Front = ({ data, showAnswer }: { data: Message['data'], showAnswer:
                     </span>
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-sm text-gray-500 font-medium mb-1">Meaning</span>
-                    <span className="text-xl text-gray-900">
+                    <span className="text-xs sm:text-sm text-gray-500 font-medium mb-1">Meaning</span>
+                    <span className="text-lg sm:text-xl text-gray-900 leading-relaxed">
                         {data.meaning}
                     </span>
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-sm text-gray-500 font-medium mb-1">Part of Speech</span>
+                    <span className="text-xs sm:text-sm text-gray-500 font-medium mb-1">Part of Speech</span>
                     <span
-                        className="text-base"
+                        className="text-sm sm:text-base"
                         style={{
                             color: "#52c41a",
                             background: "#f6ffed",
@@ -45,7 +45,7 @@ export const Front = ({ data, showAnswer }: { data: Message['data'], showAnswer:
                             borderStyle: "solid",
                             borderWidth: "1px",
                             borderRadius: "0.375rem",
-                            padding: "0.25rem 0.5rem",
+                            padding: "0.2rem 0.45rem",
                             display: "inline-block",
                             width: "fit-content",
                         }}

@@ -1,21 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 @import "tailwindcss";
 @import 'swiper/css';
 @import 'swiper/css/pagination';
-@import 'swiper/css/navigation';
 
 .mySwiper {
   width: 100%;
-  height: 300px;
+  max-width: 480px;
+  height: 260px;
+  margin: 0 auto;
 }
 
 .swiper-pagination-bullet {
-  width: 50px !important;
-  height: 30px !important;
-  border: 2px solid #000 !important;
+  width: 28px !important;
+  height: 22px !important;
+  border: 1px solid #000 !important;
   border-radius: 2px !important;
   color: #ff4d4f !important;
   background: #fff2f0 !important;
   border-color: #ffccc7 !important;
+}
+
+@media (max-width: 414px) {
+  .mySwiper {
+    height: 220px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 12px !important;
+  }
 }
